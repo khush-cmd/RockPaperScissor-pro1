@@ -1,2 +1,4 @@
 # RockPaperScissor-pro1
-This is my first Git repository with a web project
+A fun web-based Rock Paper Scissors game built with HTML, CSS, and JavaScript. 
+Click on an emoji to play and see if you can beat the computer!
+
