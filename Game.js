@@ -5,7 +5,17 @@ let score =JSON.parse(localStorage.getItem('score')) || {
     };
     updateScoreElement();
     
-
+    document.body.addEventListener('keydown',(event) =>{
+        if(event.key === 'r'){
+            playGame('rock');
+        }
+        else if(event.key === 's'){
+            playGame('scissor');
+        }
+        else if(event.key === 'p'){
+            playGame('paper');
+        }
+    });
     document.querySelectorAll('.js-rock-button').forEach(button => {
 
         button.addEventListener('click',() =>{
