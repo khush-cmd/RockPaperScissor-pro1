@@ -4,51 +4,48 @@ let score =JSON.parse(localStorage.getItem('score')) || {
         ties:0
     };
     updateScoreElement();
-    // let isAutoPlaying = false;
-    // let intervalId;
-    // function autoPlay(){
-    //     if(!isAutoPlaying){
+    
 
-    //         intervalId = setInterval(function(){
-    //            const playerMove = pickComputerMove();
-    //            playGame(playerMove); 
-    //         },1000);
-    //         isAutoPlaying = true;
-    //     }
-    //     else{
-    //         clearInterval(intervalId);
-    //         // clearInterval is fuction to remove the setInterval function
-    //         isAutoPlaying = false;
-    //     }
-    // }
+    document.querySelectorAll('.js-rock-button').forEach(button => {
 
-    document.querySelectorAll('.js-rock-button').addEventListner('click',() =>{
-        playGame('rock');
+        button.addEventListener('click',() =>{
+            playGame('rock');
+        });
     });
-    document.querySelectorAll('.js-scissor-button').addEventListner('click',() =>{
-        playGame('scissor');
+    document.querySelectorAll('.js-scissor-button').forEach(button => {
+
+        button.addEventListener('click',() =>{
+            playGame('scissor');
+        });
     });
-    document.querySelectorAll('js-paper-button').addEventListner('click',() => {
-        playGame('paper');
+    document.querySelectorAll('.js-paper-button').forEach(button => {
+
+        button.addEventListener('click',() =>{
+            playGame('paper');
+        });
     });
+    
     let isAutoPlaying = false;
     let intervalId;
     function autoPlay(){
         if(!isAutoPlaying){
-            intervalId = setInterval(function(){
+            intervalId = setInterval(function (){
                 const playerMove = pickComputerMove();
                 playGame(playerMove);
             },1000);
             isAutoPlaying = true;
         }
-        else{
+            else{
             clearInterval(intervalId);
             isAutoPlaying = false;
         }
-        document.querySelector('.auto-play-button').addEventListener('click',()=>{
-            autoPlay();
-        });
     }
+    document.querySelector('.auto-play-button').addEventListener('click',() =>{
+        autoPlay();
+    });
+
+
+
     function playGame(playerMove){
     const computerMove = pickComputerMove();
     let result = '';
@@ -104,8 +101,6 @@ let score =JSON.parse(localStorage.getItem('score')) || {
         <img src="${playerMove}-emoji.png" class="move-icon">
         <img src="${computerMove}-emoji.png" class="move-icon">
         Computer`;
-    // alert(`You picked ${playerMove}. Computer picked ${computerMove}. Result ${result}.
-    // Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
         }
         function updateScoreElement(){
             document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
